@@ -49,3 +49,47 @@ header button:hover {
     background-color: var(--btn-color-2);
     color: white;
 }
+
+#add-book-dialog {
+    border-radius: 25px;
+    padding: 24px;
+    box-shadow: 0 0 20px 1px black;
+}
+
+#add-book-dialog::backdrop {
+    background-color: hsla(0, 0%, 0%, 50%);
+}
+
+#add-book-dialog > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#close-dialog {
+    align-self: flex-end;
+    font-size: 8px;
+    background-color: red;
+    padding: 0 min-content;
+}
+
+#close-dialog:hover {
+    background-color: rgb(95, 1, 1);
+    color: white;
+}
+
+#add-book-dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#add-book-dialog form > label {
+    font-weight: bold;
+}
+
+#add-book-dialog form > input[type="text"] {
+    padding: 8px 16px;
+    border: 1px solid black;
+    border-radius: 25px;
+}
