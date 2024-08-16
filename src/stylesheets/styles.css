@@ -1,0 +1,5 @@
+@import url("../fonts/Roboto-Font/stylesheet.css");
+
+* {
+    font-family: 'robotoregular', sans-serif;
+}
