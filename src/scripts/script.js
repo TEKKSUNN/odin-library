@@ -41,6 +41,8 @@ document.addEventListener("DOMContentLoaded", function() {
             newBook = new Book(bookName);
             this.push(newBook);
             this.updateBookList();
+            this.history.push(`Added book \"${bookName}\".`);
+            this.updateHistory();
         };
 
         // Shows book names
@@ -59,6 +61,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 bookList.appendChild(newItem);
             });
         };
+
+        // Create history property
+        this.history = [];
+
+        // Update "History" tab
+        this.updateHistory = function() {
+            const history = document.querySelector("section.history > ul.articles");
+            this.history.forEach(function(action) {
+                newItem = document.createElement("li");
+                newItem.textContent = action;
+                history.appendChild(newItem);
+            });
+        }
     };
 
     // Create library variable
