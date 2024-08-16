@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let myLibrary = new Library();
 
     // Add new books through webpage
-    const form = document.querySelector("dialog > form");
+    const form = document.querySelector("dialog > div > form");
     form.addEventListener("submit", function() {
         bookName = document.getElementById("book-name").value;
         myLibrary.addBook(bookName);
