@@ -3,3 +3,49 @@
 * {
     font-family: 'robotoregular', sans-serif;
 }
+
+:root {
+    --btn-color-1: orange;
+    --btn-color-2: hsl(39, 25%, 50%);
+    --btn-padding-1: 8px 18px; 
+    --btn-radius-1: 8px;
+}
+
+body {
+    display: grid;
+    grid-template: min-content auto / 1fr;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 0;
+    align-items: center;
+}
+
+header > * {
+    padding: 0 24px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+header button {
+    background-color: var(--btn-color-1);
+    color: black;
+    border: 0;
+    padding: var(--btn-padding-1);
+    border-radius: var(--btn-radius-1);
+}
+
+header button:hover {
+    background-color: var(--btn-color-2);
+    color: white;
+}
