@@ -78,4 +78,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Create library variable
     let myLibrary = new Library();
+
+    // Add new books through webpage
+    const form = document.querySelector("dialog > form");
+    form.addEventListener("submit", function() {
+        bookName = document.getElementById("book-name").value;
+        myLibrary.addBook(bookName);
+    });
 });
