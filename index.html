@@ -12,7 +12,14 @@
         <h1 class="title">LIBRARY</h1>
         <nav>
             <ul>
-                <li><a href="./src/pages/new-book.html" rel="noopener noreferrer">Add New Book</a></li>
+                <dialog id="add-book-dialog">
+                    <button id="close-dialog">X</button>
+                    <form method="dialog">
+                        <label for="book-name">Book Name:</label><input type="text" name="book-name" id="book-name">
+                        <button type="submit">Add</button>
+                    </form>
+                </dialog>
+                <li><button id="add-book">Add New Book</button></li>
             </ul>
         </nav>
     </header>
