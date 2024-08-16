@@ -40,12 +40,23 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             newBook = new Book(bookName);
             this.push(newBook);
+            this.updateBookList();
         };
 
         // Shows book names
         this.showBookNames = function() { 
             this.forEach(function(bookObject) {
                 console.log(bookObject.name);
+            });
+        };
+
+        // Update book list tab
+        this.updateBookList = function() {
+            const bookList = document.querySelector("section.book-list > ul.articles");
+            this.forEach(function(bookObject) {
+                newItem = document.createElement("li");
+                newItem.textContent = bookObject.name;
+                bookList.appendChild(newItem);
             });
         };
     };
