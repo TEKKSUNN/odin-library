@@ -197,3 +197,7 @@ main > section {
     height: 0.70rem;
     width: auto;
 }
+
+.read-item-checkbox:hover {
+    box-shadow: rgba(0, 0, 0, 0.25);
+}
