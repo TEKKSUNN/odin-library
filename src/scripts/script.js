@@ -22,20 +22,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Checks if a book name is in the library
         this.inLibrary = function(bookName) {
+            let res = false;
             this.forEach((bookObject) => {
                 if (bookObject.name === bookName) {
-                    window.alert("Book already exists.")
-                    return true;
+                    res = true;
                 }
             });
-            return false;
+            return res;
         };
 
         // Adds book to library
         this.addBook = function(bookName) {
             // Check if book name is in the library
             if (myLibrary.inLibrary(bookName)) {
-                window.alert(`Book name ${bookName} already in local library.`);
+                window.alert(`Book name \"${bookName}\" already in local library.`);
                 return;
             }
             newBook = new Book(bookName);
