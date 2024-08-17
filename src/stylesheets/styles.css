@@ -110,6 +110,7 @@ main {
     display: grid;
     grid-template: 1fr / 4fr 1fr;
     gap: 50px;
+    background-color: rgba(245, 245, 245, 0.50);
 }
 
 main > section {
