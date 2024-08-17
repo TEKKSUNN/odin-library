@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 readCheckBox.className = "read-checkbox";
                 const readLabel = document.createElement("label");
                 readLabel.setAttribute("for", `read-item-${index}`);
-                readLabel.textContent = "Read: "
+                readLabel.textContent = "READ:"
                 const readItem = document.createElement("input");
                 readItem.setAttribute("id", `read-item-${index}`);
                 readItem.setAttribute("type", "checkbox");
