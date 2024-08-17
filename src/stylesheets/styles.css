@@ -194,8 +194,10 @@ main > section {
 }
 
 .read-item-checkbox {
-    height: 0.70rem;
+    height: 0.75rem;
     width: auto;
+    position: relative;
+    vertical-align: -2px;
 }
 
 .read-item-checkbox:hover {
