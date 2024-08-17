@@ -126,7 +126,7 @@ main > section {
 
 .book-list .articles {
     display: grid;
-    grid-auto-rows: min-content;
+    grid-auto-rows: max-content;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 25px;
     overflow: auto;
@@ -160,6 +160,7 @@ main > section {
     flex-direction: column;
     max-height: 75vh;
     overflow: auto;
+    inline-size: 30ch;
 }
 
 .history .articles li {
