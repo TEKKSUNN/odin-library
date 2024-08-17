@@ -71,13 +71,13 @@ header button:hover {
 #close-dialog {
     align-self: flex-end;
     font-size: 8px;
+    color: white;
     background-color: red;
     padding: 0 min-content;
 }
 
 #close-dialog:hover {
     background-color: rgb(95, 1, 1);
-    color: white;
 }
 
 #add-book-dialog form {
