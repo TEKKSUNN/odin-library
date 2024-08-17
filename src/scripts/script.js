@@ -55,11 +55,13 @@ document.addEventListener("DOMContentLoaded", function() {
         // Update book list tab
         this.updateBookList = function() {
             const bookList = document.querySelector("section.book-list > ul.articles");
+            const newList = document.createElement("ul");
             this.forEach(function(bookObject) {
                 newItem = document.createElement("li");
                 newItem.textContent = bookObject.name;
-                bookList.appendChild(newItem);
+                newList.appendChild(newItem);
             });
+            bookList.innerHTML = newList.innerHTML;
         };
 
         // Create history property
@@ -68,11 +70,13 @@ document.addEventListener("DOMContentLoaded", function() {
         // Update "History" tab
         this.updateHistory = function() {
             const history = document.querySelector("section.history > ul.articles");
+            const newList = document.createElement("ul");
             this.history.forEach(function(action) {
                 newItem = document.createElement("li");
                 newItem.textContent = action;
-                history.appendChild(newItem);
+                newList.appendChild(newItem);
             });
+            history.innerHTML = newList.innerHTML;
         }
     };
 
