@@ -147,6 +147,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Create library variable
     let myLibrary = new Library();
+    const defaultBooks = ["The Great Gatsby", "Catch-22", "Wuthering Heights", "To Kill a Mockingbird", "The Catcher in the Rye", "Mrs Dalloway"];
+    defaultBooks.forEach((bookName) => myLibrary.addBook(bookName));
 
     // Add new books through webpage
     const form = document.querySelector("dialog > div > form");
