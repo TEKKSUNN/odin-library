@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 // Add Read Check Box
                 const readCheckBox = document.createElement("div");
+                readCheckBox.className = "read-checkbox";
                 const readLabel = document.createElement("label");
                 readLabel.setAttribute("for", `read-item-${index}`);
                 readLabel.textContent = "Read: "
