@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 newList.appendChild(newItem);
             });
             history.innerHTML = newList.innerHTML;
+            history.scrollTop = history.scrollHeight - history.clientHeight;
         }
 
         // Update
