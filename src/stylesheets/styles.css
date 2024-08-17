@@ -110,7 +110,7 @@ main > section {
 .book-list .articles {
     display: grid;
     grid-auto-rows: 1fr 1fr;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 2fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 2fr));
     gap: 25px;
     overflow: auto;
     height: inherit;
@@ -124,4 +124,6 @@ main > section {
     padding: 25px;
     height: auto;
     width: auto;
+    font-weight: bold;
+    box-shadow: 5px 5px 10px -5px black;
 }
