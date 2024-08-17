@@ -86,7 +86,11 @@ document.addEventListener("DOMContentLoaded", function() {
     // Add new books through webpage
     const form = document.querySelector("dialog > div > form");
     form.addEventListener("submit", function() {
-        bookName = document.getElementById("book-name").value;
+        bookElement = document.getElementById("book-name");
+        bookName = bookElement.value.trim();
+        if (bookName === "") {
+            return;
+        }
         myLibrary.addBook(bookName);
     });
 });
