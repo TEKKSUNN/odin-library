@@ -126,6 +126,7 @@ main > section {
     box-sizing: border-box;
     overflow: auto;
     align-items: stretch;
+    padding: 10px;
 }
 
 .book-list li {
