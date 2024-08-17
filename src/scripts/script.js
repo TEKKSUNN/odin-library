@@ -40,9 +40,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             newBook = new Book(bookName);
             this.push(newBook);
-            this.updateBookList();
             this.history.push(`Added book \"${bookName}\".`);
-            this.updateHistory();
+            this.update();
         };
 
         // Shows book names
@@ -52,16 +51,39 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         };
 
+        // Delete a book
+        this.removeBook = function(bookName) {
+            this.forEach(function(bookObject, index) {
+                if (bookObject.name === bookName) {
+                    this.splice(index, 1);
+                }
+            }.bind(this));
+            this.history.push(`Deleted book \"${bookName}\".`);
+            this.update();
+        };
+
         // Update book list tab
         this.updateBookList = function() {
             const bookList = document.querySelector("section.book-list > ul.articles");
             const newList = document.createElement("ul");
-            this.forEach(function(bookObject) {
-                newItem = document.createElement("li");
+            this.forEach(function(bookObject, index) {
+                const newItem = document.createElement("li");
                 newItem.textContent = bookObject.name;
+                const delItem = document.createElement("button");
+                delItem.className = "delete-item";
+                delItem.textContent = "Delete";
+                newItem.appendChild(delItem);
                 newList.appendChild(newItem);
             });
             bookList.innerHTML = newList.innerHTML;
+            const DEL_BUTTONS = Array.from(document.querySelectorAll(".delete-item"));
+            DEL_BUTTONS.forEach(function(button) {
+                button.addEventListener("click", (event) => {
+                    target = event.target;
+                    bookName = target.parentNode.firstChild.textContent;
+                    this.removeBook(bookName);
+                });
+            }.bind(this));
         };
 
         // Create history property
@@ -77,6 +99,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 newList.appendChild(newItem);
             });
             history.innerHTML = newList.innerHTML;
+        }
+
+        // Update
+        this.update = function() {
+            this.updateBookList();
+            this.updateHistory();
         }
     };
 

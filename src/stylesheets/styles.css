@@ -162,3 +162,17 @@ main > section {
     border-bottom: 1px solid rgba(0, 0, 0, 0.25);
     padding: 10px 0;
 }
+
+.delete-item {
+    margin-left: 8px;
+    background-color: red;
+    padding: 4px 8px;
+    border-radius: 25px;
+    border: 0;
+    color: white;
+}
+
+.delete-item:hover {
+    background-color: hsl(0, 100%, 25%);
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.25);
+}
