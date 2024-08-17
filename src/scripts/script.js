@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Construct Book Object
     const Book = function(name) {
         this.name = name;
+        this.read = false;
     };
 
     // Construct Library Object
@@ -62,6 +63,15 @@ document.addEventListener("DOMContentLoaded", function() {
             this.update();
         };
 
+        // Change "read" state of a book
+        this.readStatus = function(bookName, boolValue) {
+            this.forEach(function(bookObject) {
+                if (bookObject.name === bookName) {
+                    bookObject.read = boolValue;
+                }
+            });
+        };
+
         // Update book list tab
         this.updateBookList = function() {
             const bookList = document.querySelector("section.book-list > ul.articles");
@@ -72,6 +82,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 const delItem = document.createElement("button");
                 delItem.className = "delete-item";
                 delItem.textContent = "Delete";
+
+                // Add Read Check Box
+                const readCheckBox = document.createElement("div");
+                const readLabel = document.createElement("label");
+                readLabel.setAttribute("for", `read-item-${index}`);
+                readLabel.textContent = "Read: "
+                const readItem = document.createElement("input");
+                readItem.setAttribute("id", `read-item-${index}`);
+                readItem.setAttribute("type", "checkbox");
+                readItem.setAttribute("name", `read-item-${index}`);
+                readItem.className = "read-item-checkbox";
+                readCheckBox.appendChild(readLabel);
+                readCheckBox.appendChild(readItem);
+
+                newItem.appendChild(readCheckBox);
                 newItem.appendChild(delItem);
                 newList.appendChild(newItem);
             });
@@ -82,6 +107,16 @@ document.addEventListener("DOMContentLoaded", function() {
                     target = event.target;
                     bookName = target.parentNode.firstChild.textContent;
                     this.removeBook(bookName);
+                });
+            }.bind(this));
+            const READ_ITEM_CHECKBOXES = Array.from(document.querySelectorAll(".read-item-checkbox"));
+            READ_ITEM_CHECKBOXES.forEach(function(checkboxElement) {
+                checkboxElement.addEventListener("click", (event) => {
+                    const target = event.target;
+                    const bookName = target.parentNode.parentNode.firstChild.textContent;
+                    this.readStatus(bookName, target.checked);
+                    this.history.push(`Changed \"read\" state of book \"${bookName}\" to ${target.checked}`);
+                    this.updateHistory();
                 });
             }.bind(this));
         };
