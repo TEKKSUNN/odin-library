@@ -118,21 +118,24 @@ main > section {
 
 .book-list .articles {
     display: grid;
-    grid-auto-rows: 1fr 1fr;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 2fr));
+    grid-auto-rows: min-content;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 25px;
     overflow: auto;
     height: inherit;
     box-sizing: border-box;
     overflow: auto;
+    align-items: stretch;
 }
 
 .book-list li {
     background-color: khaki;
     border-radius: 16px;
     padding: 25px;
-    height: auto;
-    width: auto;
     font-weight: bold;
     box-shadow: 5px 5px 10px -5px black;
+    font-size: minmax(1rem, 2.5rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
