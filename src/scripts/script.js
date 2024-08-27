@@ -11,18 +11,17 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Construct Book Object
-    const Book = function(name) {
-        this.name = name;
-        this.read = false;
+    class Book {
+        constructor(name) {
+            this.name = name;
+            this.read = false;
+        }
     };
 
     // Construct Library Object
-    const Library = function() {
-        // Make "this" or the Library object be an Array for storing books
-        Object.setPrototypeOf(this, Array.prototype)
-
+    class Library extends Array {
         // Checks if a book name is in the library
-        this.inLibrary = function(bookName) {
+        inLibrary = function(bookName) {
             let res = false;
             this.forEach((bookObject) => {
                 if (bookObject.name === bookName) {
@@ -33,27 +32,27 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         // Adds book to library
-        this.addBook = function(bookName) {
+        addBook = function(bookName) {
             // Check if book name is in the library
             if (myLibrary.inLibrary(bookName)) {
                 window.alert(`Book name \"${bookName}\" already in local library.`);
                 return;
             }
-            newBook = new Book(bookName);
+            const newBook = new Book(bookName);
             this.push(newBook);
             this.history.push(`Added book \"${bookName}\".`);
             this.update();
         };
 
         // Shows book names
-        this.showBookNames = function() { 
+        showBookNames = function() { 
             this.forEach(function(bookObject) {
                 console.log(bookObject.name);
             });
         };
 
         // Delete a book
-        this.removeBook = function(bookName) {
+        removeBook = function(bookName) {
             this.forEach(function(bookObject, index) {
                 if (bookObject.name === bookName) {
                     this.splice(index, 1);
@@ -64,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         // Change "read" state of a book
-        this.readStatus = function(bookName, boolValue) {
+        readStatus = function(bookName, boolValue) {
             this.forEach(function(bookObject) {
                 if (bookObject.name === bookName) {
                     bookObject.read = boolValue;
@@ -73,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         // Update book list tab
-        this.updateBookList = function() {
+        updateBookList = function() {
             const bookList = document.querySelector("section.book-list > ul.articles");
             const newList = document.createElement("ul");
             this.forEach(function(bookObject, index) {
@@ -105,10 +104,11 @@ document.addEventListener("DOMContentLoaded", function() {
             const DEL_BUTTONS = Array.from(document.querySelectorAll(".delete-item"));
             DEL_BUTTONS.forEach(function(button) {
                 button.addEventListener("click", (event) => {
-                    target = event.target;
-                    bookName = target.parentNode.firstChild.textContent;
+                    const target = event.target;
+                    const bookName = target.parentNode.firstChild.textContent;
                     this.removeBook(bookName);
                 });
+                console.log(button.attributes);
             }.bind(this));
             const READ_ITEM_CHECKBOXES = Array.from(document.querySelectorAll(".read-item-checkbox"));
             READ_ITEM_CHECKBOXES.forEach(function(checkboxElement) {
@@ -123,14 +123,14 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         // Create history property
-        this.history = [];
+        history = [];
 
         // Update "History" tab
-        this.updateHistory = function() {
+        updateHistory = function() {
             const history = document.querySelector("section.history > ul.articles");
             const newList = document.createElement("ul");
             this.history.forEach(function(action) {
-                newItem = document.createElement("li");
+                const newItem = document.createElement("li");
                 newItem.textContent = action;
                 newList.appendChild(newItem);
             });
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // Update
-        this.update = function() {
+        update = function() {
             this.updateBookList();
             this.updateHistory();
         }
